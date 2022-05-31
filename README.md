@@ -4,8 +4,8 @@ The project uses the unique Moonbeam pre-compile features that enable direct pro
 
 
 Deployed versions of the project can be found here: <br/>
-Starlight Social : 0x4AaB8d34f313e3De327205fc04C37d2EF8666e3B <br/>
-Dashboard Factory : 0x4D4D46b83874A7539Fd71e956A82634E3a4df669 <br/>
+Starlight Social : 0x8070951c4D4d514D934Ad090cbBa592D12ad14bf <br/>
+Dashboard Factory : 0xdcdCF4Cb6864c2DDc5464713F3Ec248CBB788F0c <br/>
 Staking Interface : 0x0000000000000000000000000000000000000800 <br/>
 
 The user interface for the project can be found here:
