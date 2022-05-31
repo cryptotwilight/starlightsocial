@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Starlight Social - Welcome</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="all,follow">
+    <!-- Bootstrap CSS-->
+    <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
+    <!-- Font Awesome CSS-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <!-- Google fonts - Popppins for copy-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,800">
+    <!-- orion icons-->
+    <link rel="stylesheet" href="css/orionicons.css">
+    <!-- theme stylesheet-->
+    <link rel="stylesheet" href="css/style.default.css" id="theme-stylesheet">
+    <!-- Custom stylesheet - for your changes-->
+    <link rel="stylesheet" href="css/custom.css">
+    <!-- Favicon-->
+    <link rel="shortcut icon" href="img/favicon.png?3">
+    <!-- Tweaks for older IEs-->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
+    <script src="https://unpkg.com/ipfs-http-client-lite/dist/index.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://cdn.ethers.io/lib/ethers-5.0.umd.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/ethjs@0.3.4/dist/ethjs.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+</head>
+
+<body>
+    <!-- navbar-->
+    <header class="header">
+        <nav class="navbar navbar-expand-lg px-4 py-2 bg-white shadow"><a href="#" class="sidebar-toggler text-gray-500 mr-4 mr-lg-5 lead"><i class="fas fa-align-left"></i></a>
+            <a href="index.html" class="navbar-brand font-weight-bold text-uppercase text-base"><img width="90" height="30" src="img/starlight_social_logo_long.svg" alt="Starlight Social"></a>
+            <ul class="ml-auto d-flex align-items-center list-unstyled mb-0">
+                <li class="nav-item">
+                    <form id="searchForm" class="ml-auto d-none d-lg-block">
+                        <div class="form-group position-relative mb-0">
+                            <span id="show_wallet"></span>
+                            <img src="img/Moonbeam-Favicon-50.png" height="50" width="50"><input type="button" id="connect_web_3" class="form-control form-control-sm border-0 no-shadow pl-4" value="Connect Moonbeam Alpha">
+                        </div>
+                    </form>
+                </li>
+                <li class="nav-item">
+                    <form id="searchForm" class="ml-auto d-none d-lg-block">
+                        <div class="form-group position-relative mb-0">
+                            <button type="submit" style="top: -3px; left: 0;" class="position-absolute bg-white border-0 p-0"><i class="o-search-magnify-1 text-gray text-lg"></i></button>
+                            <input type="search" placeholder="Search ..." class="form-control form-control-sm border-0 no-shadow pl-4">
+                        </div>
+                    </form>
+                </li>
+                <li class="nav-item dropdown mr-3"><a id="notifications" href="http://example.com" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle text-gray-400 px-1"><i class="fa fa-bell"></i><span class="notification-icon"></span></a>
+                    <div aria-labelledby="notifications" class="dropdown-menu">
+                        <a href="#" class="dropdown-item">
+                            <div class="d-flex align-items-center">
+                                <div class="icon icon-sm bg-violet text-white"><i class="fab fa-twitter"></i></div>
+                                <div class="text ml-2">
+                                    <p class="mb-0">You have 2 followers</p>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="#" class="dropdown-item">
+                            <div class="d-flex align-items-center">
+                                <div class="icon icon-sm bg-green text-white"><i class="fas fa-envelope"></i></div>
+                                <div class="text ml-2">
+                                    <p class="mb-0">You have 6 new messages</p>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="#" class="dropdown-item">
+                            <div class="d-flex align-items-center">
+                                <div class="icon icon-sm bg-violet text-white"><i class="fab fa-twitter"></i></div>
+                                <div class="text ml-2">
+                                    <p class="mb-0">You have 2 followers</p>
+                                </div>
+                            </div>
+                        </a>
+                        <div class="dropdown-divider"></div><a href="#" class="dropdown-item text-center"><small class="font-weight-bold headings-font-family text-uppercase">View all notifications</small></a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown ml-auto">
+                    <a id="userInfo" href="http://example.com" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle"><img src="img/avatar-6.jpg" alt="Jason Doe" style="max-width: 2.5rem;" class="img-fluid rounded-circle shadow"></a>
+                    <div aria-labelledby="userInfo" class="dropdown-menu"><a href="#" class="dropdown-item"><strong class="d-block text-uppercase headings-font-family">Mark Stephen</strong><small>Web Developer</small></a>
+                        <div class="dropdown-divider"></div><a href=" $('#settings').modal('show')" data-toggle="modal" data-target="#settings_modal" class="dropdown-item">Settings</a><a href="#" class="dropdown-item">Activity log       </a>
+                        <div class="dropdown-divider"></div><a href="login.html" class="dropdown-item">Logout</a>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <div class="d-flex align-items-stretch">
+        <div id="sidebar" class="sidebar py-3">
+            <div class="text-gray-400 text-uppercase px-3 px-lg-4 py-4 font-weight-bold small headings-font-family">MAIN</div>
+            <ul class="sidebar-menu list-unstyled">
+                <li class="sidebar-list-item"><a href="index.html" class="sidebar-link text-muted active"><i class="o-home-1 mr-3 text-gray"></i><span>Home</span></a></li>
+            </ul>
+
+        </div>
+        <div class="page-holder w-100 d-flex flex-wrap">
+            <div class="container-fluid px-xl-5">
+                <section class="py-5">
+
+                </section>
+                <section>
+                    <div class="row mb-4">
+                        <div class="col-lg-7 mb-4 mb-lg-0">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h2 class="h6 text-uppercase mb-0">Latest from your Stream</h2>
+                                </div>
+                                <div class="card-body">
+                                    <p class="text-gray">Thanksgiving with Rich <button id="share_media" data-toggle="modal" data-target="#myModal" class="btn btn-primary">Share</button></p>
+                                    <div class="chart-holder">
+                                        <img src="img/pexels-august-de-richelieu-4262173.jpg" alt="thanksgiving with Rich" class="img-fluid shadow">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-5 mb-4 mb-lg-0 pl-lg-0">
+                            <div class="bg-white shadow roundy px-4 py-3 d-flex align-items-center justify-content-between mb-4">
+                                <div class="flex-grow-1 d-flex align-items-center">
+                                    <div class="dot mr-3 bg-violet"></div>
+                                    <div class="text">
+                                        <h6 class="mb-0">Share from Jason</h6><span class="text-gray">127 new cases</span>
+                                    </div>
+                                </div>
+                                <div class="icon bg-violet text-white"><img src="img/avatar-1.jpg" class="img-fluid rounded-circle shadow"></div>
+                            </div>
+                            <div class="bg-white shadow roundy px-4 py-3 d-flex align-items-center justify-content-between mb-4">
+                                <div class="flex-grow-1 d-flex align-items-center">
+                                    <div class="dot mr-3 bg-green"></div>
+                                    <div class="text">
+                                        <h6 class="mb-0">Share from Tanya</h6><span class="text-gray">214 new quotes</span>
+                                    </div>
+                                </div>
+                                <div class="icon bg-green text-white"><img src="img/avatar-5.jpg" class="img-fluid rounded-circle shadow"></div>
+                            </div>
+                            <div class="bg-white shadow roundy px-4 py-3 d-flex align-items-center justify-content-between mb-4">
+                                <div class="flex-grow-1 d-flex align-items-center">
+                                    <div class="dot mr-3 bg-blue"></div>
+                                    <div class="text">
+                                        <h6 class="mb-0">Share from Tina</h6><span class="text-gray">25 new clients</span>
+                                    </div>
+                                </div>
+                                <div class="icon bg-blue text-white"><img src="img/avatar-3.jpg" class="img-fluid rounded-circle shadow"></div>
+                            </div>
+
+                            <div class="bg-white shadow roundy px-4 py-3 d-flex align-items-center justify-content-between mb-4">
+                                <div class="flex-grow-1 d-flex align-items-center">
+                                    <div class="text">
+                                        <table class="fluid">
+                                            <tr>
+                                                <td>
+                                                    <h6 class="mb-0">Enter friend nickname </h6>
+                                                </td>
+                                                <td colspan=""><input id="selected_friend" type="text" class="form-control-plaintext" placeholder=" friend nickname ..."></td>
+
+                                            </tr>
+                                            <tr>
+                                                <td></td>
+                                                <td><button id="find_friend" class="btn btn-outline-warning">Find Friend</button></td>
+                                                <td><button id="add_friend" class="btn btn-outline-success">Add Friend</button> </td>
+                                                <td><button class="btn btn-outline-danger" id="remove_friend">Remove Friend</button></td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section class="py-5">
+                    <div class="row">
+                        <div class="col-xl-3 col-lg-6 mb-4 mb-xl-0">
+                            <div class="bg-white shadow roundy p-4 h-100 d-flex align-items-center justify-content-between">
+                                <div class="flex-grow-1 d-flex align-items-center">
+                                    <div class="dot mr-3 bg-violet"></div>
+                                    <div class="text">
+                                        <h6 class="mb-0">Charge Balance</h6><span id="charge_balance" class="text-gray">5.236548 DIV</span>
+                                    </div>
+                                </div>
+                                <div class="icon text-white bg-violet"><i class="fas fa-server"></i></div>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-lg-6 mb-4 mb-xl-0">
+                            <div class="bg-white shadow roundy p-4 h-100 d-flex align-items-center justify-content-between">
+                                <div class="flex-grow-1 d-flex align-items-center">
+                                    <div class="dot mr-3 bg-green"></div>
+                                    <div class="text">
+                                        <h6 class="mb-0">Reward Balance</h6><span ic="reward_balance" class="text-gray">0.236548 DIV</span>
+                                    </div>
+                                </div>
+                                <div class="icon text-white bg-green"><i class="far fa-clipboard"></i></div>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-lg-6 mb-4 mb-xl-0">
+                            <div class="bg-white shadow roundy p-4 h-100 d-flex align-items-center justify-content-between">
+                                <div class="flex-grow-1 d-flex align-items-center">
+                                    <div class="dot mr-3 bg-blue"></div>
+                                    <div class="text">
+                                        <h6 class="mb-0">Most Shared</h6><span class="text-gray">My first steps 300 shares</span>
+                                    </div>
+                                </div>
+                                <div class="icon text-white bg-blue"><i class="fa fa-dolly-flatbed"></i></div>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-lg-6 mb-4 mb-xl-0">
+                            <div class="bg-white shadow roundy p-4 h-100 d-flex align-items-center justify-content-between">
+                                <div class="flex-grow-1 d-flex align-items-center">
+                                    <div class="dot mr-3 bg-red"></div>
+                                    <div class="text">
+                                        <h6 class="mb-0">Total Balance</h6><span class="text-gray">5.473096</span>
+                                    </div>
+                                </div>
+                                <div class="icon text-white bg-red"><i class="fas fa-receipt"></i></div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section class="py-5">
+                    <div class="row text-dark">
+                        <div class="col-lg-4 mb-4 mb-lg-0">
+                            <div class="card rounded credit-card bg-hover-gradient-violet">
+                                <div class="content d-flex flex-column justify-content-between p-4">
+                                    <h1 class="mb-5">Upload Media</h1>
+                                    <div class="d-flex justify-content-between align-items-end pt-3">
+                                        <label for="upload">Select file :</label><input type="file" id="upload" class="form-control-file">
+                                        <h4 class="mb-0"><button id="upload_media" class="btn btn-outline-success">Upload</button></h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 mb-4 mb-lg-0">
+                            <div class="card rounded credit-card bg-hover-gradient-blue">
+                                <div class="content d-flex flex-column justify-content-between p-4">
+                                    <h1 class="mb-5">Charge Your Social</h1>
+                                    <div class="d-flex justify-content-between align-items-end pt-3">
+                                        <div class="text-uppercase">
+                                            <div class="font-weight-bold d-block">Enter Charge Amount</div><button id="charge_social" class="btn btn-outline-primary">Approve Charge</button><button id="charge_social" class="btn btn-outline-success">Charge Social</button>
+                                        </div>
+                                        <h4 class="mb-0"><input type="text" id="charge_amount" class="form-control form-control-sm border-0 no-shadow pl-4" placeholder="enter charge amount"></h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 mb-4 mb-lg-0">
+                            <div class="card rounded credit-card bg-hover-gradient-green">
+                                <div class="content d-flex flex-column justify-content-between p-4">
+                                    <h1 class="mb-5">Withdraw Your Rewards</h1>
+                                    <div class="d-flex justify-content-between align-items-end pt-3">
+                                        <div class="text-uppercase">
+                                            <div class="font-weight-bold d-block">Enter Withdraw Amount</div><button id="charge_social" class="btn btn-outline-danger">Withdraw Rewards</button>
+                                        </div>
+                                        <h4 class="mb-0"><input type="text" id="charge_amount" class="form-control form-control-sm border-0 no-shadow pl-4" placeholder="enter withdraw amount"></h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="py-5">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <a href="#" class="message card px-5 py-3 mb-4 bg-hover-gradient-primary no-anchor-style">
+                                <div class="row">
+                                    <div class="col-lg-3 d-flex align-items-center flex-column flex-lg-row text-center text-md-left"><img src="img/pexels-brett-sayles-1405833.jpg" alt="..." style="max-width: 3rem" class="rounded-circle mx-3 my-2 my-lg-0">
+                                        <h6 class="mb-0">Thanks</h6>
+                                    </div>
+                                    <div class="col-lg-6 d-flex align-items-center flex-column flex-lg-row text-center text-md-left">
+                                        <div class="bg-gray-100 roundy px-4 py-1 mr-0 mr-lg-3 mt-2 mt-lg-0 text-dark exclode">User testing</div>
+                                        <p class="mb-0 mt-3 mt-lg-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor.</p>
+                                    </div>
+                                    <div class="col-lg-3 d-flex align-items-center flex-column flex-lg-row text-center text-md-left">
+                                        <button id="share_media" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Share </button>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-lg-12">
+                            <a href="#" class="message card px-5 py-3 mb-4 bg-hover-gradient-primary no-anchor-style">
+                                <div class="row">
+                                    <div class="col-lg-3 d-flex align-items-center flex-column flex-lg-row text-center text-md-left"><img src="img/pexels-agung-pandit-wiguna-1320701.jpg" alt="..." style="max-width: 3rem" class="rounded-circle mx-3 my-2 my-lg-0">
+                                        <h6 class="mb-0">The Jones</h6>
+                                    </div>
+                                    <div class="col-lg-6 d-flex align-items-center flex-column flex-lg-row text-center text-md-left">
+                                        <div class="bg-gray-100 roundy px-4 py-1 mr-0 mr-lg-3 mt-2 mt-lg-0 text-dark exclode">Web Developer</div>
+                                        <p class="mb-0 mt-3 mt-lg-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit..</p>
+                                    </div>
+                                    <div class="col-lg-3 d-flex align-items-center flex-column flex-lg-row text-center text-md-left">
+                                        <button id="share_media" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Share </button>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <footer class="footer bg-white shadow align-self-end py-3 px-xl-5 w-100">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-6 text-center text-md-left text-primary">
+                            <p class="mb-2 mb-md-0">Block Star Logic &copy; 2022</p>
+                        </div>
+                        <div class="col-md-6 text-center text-md-right text-gray-400">
+                            <p class="mb-0">Design by <a href="https://bootstrapious.com/admin-templates" class="external text-gray-400">Bootstrapious</a></p>
+                            <!-- Please do not remove the backlink to us unless you support further theme's development at https://bootstrapious.com/donate. It is part of the license conditions. Thank you for understanding :)-->
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+    <!-- Modal-->
+    <div id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" class="modal fade text-left">
+        <div role="document" class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 id="exampleModalLabel" class="modal-title">Select Friends</h4>
+                    <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="modal-body">
+                    <p>Select friends with with to share</p>
+                    <table id="friends_table">
+                        <tr>
+                            <td><img src="img/avatar-4.jpg" style="max-width: 3rem" class="rounded-circle mx-3 my-2 my-lg-0"></td>
+                            <td>Tim</td>
+                            <td><input id="share_target" type="checkbox" value="Tim"></td>
+                        </tr>
+                        <tr>
+                            <td><img src="img/avatar-5.jpg" style="max-width: 3rem" class="rounded-circle mx-3 my-2 my-lg-0"></td>
+                            <td>Anya</td>
+                            <td><input id="share_target" type="checkbox" value="Anya"></td>
+                        </tr>
+                        <tr>
+                            <td><img src="img/avatar-6.jpg" style="max-width: 3rem" class="rounded-circle mx-3 my-2 my-lg-0"></td>
+                            <td>James</td>
+                            <td><input id="share_target" type="checkbox" value="James"></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" data-dismiss="modal" class="btn btn-secondary">Close</button>
+                    <button type="button" class="btn btn-primary">Share</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Settings Modal-->
+    <div id="setting_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1" aria-hidden="true" class="modal fade text-left">
+        <div role="document" class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 id="exampleModalLabel" class="modal-title">Settings</h4>
+                    <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="modal-body">
+                    <p>Adjust Your Settings</p>
+                    <table id="settings_table">
+                        <tr>
+                            <td><label for="avatar">Select file :</label></td>
+                            <td><input type="file" id="avatar" class="form-control-file"></td>
+                            <td><button type="button" class="btn btn-primary">Set Avatar</button></td>
+                        </tr>
+                        <tr>
+                            <td><label for="nickname">Select file :</label></td>
+                            <td><input type="text" id="nickname" class="form-control-file"></td>
+                            <td><button type="button" class="btn btn-primary">Set Nickname</button></td>
+                        </tr>
+                        <tr>
+                            <td><img src="img/avatar-6.jpg" style="max-width: 3rem" class="rounded-circle mx-3 my-2 my-lg-0"></td>
+                            <td>James</td>
+                            <td><input id="share_target" type="checkbox" value="James"></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" data-dismiss="modal" class="btn btn-secondary">Close</button>
+                    <button type="button" class="btn btn-primary">Share</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <!-- JavaScript files-->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/popper.js/umd/popper.min.js">
+    </script>
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="vendor/jquery.cookie/jquery.cookie.js">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+    <script src="js/front.js"></script>
+    <script src="abi/i_dashboard_abi.js"></script>
+    <script src="abi/i_friend_abi.js"></script>
+    <script src="abi/i_starlight_social_abi.js"></script>
+    <script>
+        const onboardButton = document.getElementById("connect_web_3");
+        const showWallet = document.getElementById("show_wallet");
+
+        const jcstorage = window.sessionStorage;
+
+        var account;
+
+        const web3 = new Web3(window.ethereum);
+        console.log(web3);
+
+        console.log("web 3 " + web3.currentProvider);
+
+        // check network 
+        const supportedNetId = 1287;
+
+        const starlightSocialAddress = "";
+        const iStarlightSocialContract = new web3.eth.Contract(iStarlightSocialAbi, starlightSocialAddress);
+
+        var iDashboardContract;
+
+        const ipfs = window.IpfsHttpClientLite('https://ipfs.infura.io:5001')
+        const buffer = window.IpfsHttpClientLite.Buffer;
+        console.log("got ipfs: " + ipfs);
+
+        var connected;
+        //Created check function to see if the MetaMask extension is installed
+        const isMetaMaskInstalled = () => {
+
+            const {
+                ethereum
+            } = window;
+            return Boolean(ethereum && ethereum.isMetaMask);
+        };
+
+        const MetaMaskClientCheck = () => {
+            //Now we check to see if Metmask is installed
+            if (!isMetaMaskInstalled()) {
+                console.log("metamask not installed");
+                //If it isn't installed we ask the user to click to install it
+                onboardButton.innerText = 'Click here to install MetaMask!';
+                //When the button is clicked we call this function
+                onboardButton.onclick = onClickInstall;
+                //The button is now disabled
+                onboardButton.disabled = false;
+            } else {
+                //If it is installed we change our button text
+                onboardButton.innerText = 'Click to Connect Metamask';
+
+                console.log("metamask installed");
+                onboardButton.addEventListener('click', () => {
+                    web3.eth.net.getId()
+                        .then(function(response) {
+                            var currentChainId = response;
+                            if (currentChainId !== supportedNetId) {
+                                web3.currentProvider.request({
+                                        method: 'wallet_switchEthereumChain',
+                                        params: [{
+                                            chainId: Web3.utils.toHex(supportedNetId)
+                                        }],
+                                    })
+                                    .then(function(response) {
+                                        console.log(response);
+                                        loadConnect();
+                                    })
+                                    .catch(function(err) {
+                                        console.log(err);
+                                        // This error code indicates that the chain has not been added to MetaMask
+                                        if (err.code === 4902) {
+                                            window.ethereum.request({
+                                                    method: 'wallet_addEthereumChain',
+                                                    params: [{
+                                                        chainName: 'Moonbeam Alpha',
+                                                        chainId: web3.utils.toHex(supportedNetId),
+                                                        nativeCurrency: {
+                                                            name: 'DIV',
+                                                            decimals: 18,
+                                                            symbol: 'Div'
+                                                        },
+                                                        rpcUrls: ['https://rpc.api.moonbase.moonbeam.network'],
+                                                        blockExplorerUrls: ['https://moonbase.moonscan.io/']
+                                                    }]
+                                                })
+                                                .then(function(response) {
+                                                    console.log(response);
+                                                })
+                                                .catch(function(err) {
+                                                    console.log(err);
+                                                });
+                                        }
+
+                                    });
+                            } else {
+                                loadConnect();
+                            }
+
+                        })
+                        .catch(function(err) {
+                            console.log(err);
+                        })
+
+                });
+            }
+        };
+        const initialize = () => {
+            MetaMaskClientCheck();
+        };
+
+        window.addEventListener('DOMContentLoaded', initialize);
+
+        function loadConnect() {
+            if (!connected) {
+                getAccount();
+                onboardButton.innerText = "Web 3 Connected";
+                connected = true; 
+                
+            }
+        }
+
+        async function getAccount() {
+            const accounts = await ethereum.request({
+                method: 'eth_requestAccounts'
+            });
+            account = accounts[0];
+            connected = true;
+            showWallet.innerHTML = "<b>Connected Wallet :: " + account + "</b>"; 
+            console.log(account);
+            getDashboard();         
+        }
+
+        async function getDashboard() { 
+            iStarlightSocialContract.methods.hasDashboard().call({from : account})
+            .then(function(response){
+                console.log(response);
+                if(response) {
+                  getDb(); 
+                }
+                else{ 
+                    iStarlightSocialContract.methods.createDashboard().call({from : account}) 
+                    .then(function(response){
+                        console.log(response);
+                        getDb(); 
+                    })
+                    .catch(function(err){
+                        console.log(err);
+                    })
+                }
+            })
+            .catch(function(err){
+                console.log(err);
+            })
+        }
+
+        function getDb() {
+            iStarlightSocialContract.methods.getDashboard().call({from : account}) 
+            .then(function(response){
+                console.log(response);
+                iDashboardContract = new web3.eth.Contract(iDashboardAbi, response);
+            })
+            .catch(function(err){
+                console.log(err);
+            })
+        }
+
+        //We create a new MetaMask onboarding object to use in our app
+        //const onboarding = new MetaMaskOnboarding({ forwarderOrigin });
+
+        //This will start the onboarding proccess
+        const onClickInstall = () => {
+            onboardButton.innerText = 'Onboarding in progress';
+            onboardButton.disabled = true;
+            //On this object we have startOnboarding which will start the onboarding process for our end user
+            onboarding.startOnboarding();
+        };
+
+        const onClickConnect = async() => {
+            try {
+                // Will open the MetaMask UI
+                // You should disable this button while the request is pending!
+                await ethereum.request({
+                    method: 'eth_requestAccounts'
+                });
+            } catch (error) {
+                console.error(error);
+            }
+        };
+    </script>
+</body>
+
+</html>
