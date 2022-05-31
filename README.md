@@ -9,6 +9,10 @@ Dashboard Factory : 0xdcdCF4Cb6864c2DDc5464713F3Ec248CBB788F0c <br/>
 Staking Interface : 0x0000000000000000000000000000000000000800 <br/>
 
 The user interface for the project can be found here:
+https://lively-violet-8626.on.fleek.co/
+
+Intro video can be found here: 
+https://youtu.be/dhUprJ8mQ9Q
 
 ## How it works
 The Starlight Social project works by enabling users to charge their accounts with funds. These funds are then placed into protocol level staking using the <a href="https://github.com/PureStake/moonbeam/blob/master/precompiles/parachain-staking/StakingInterface.sol">Moonbeam Staking Interface</a>
