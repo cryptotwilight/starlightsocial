@@ -243,7 +243,7 @@
                                     <h1 class="mb-5">Charge Your Social</h1>
                                     <div class="d-flex justify-content-between align-items-end pt-3">
                                         <div class="text-uppercase">
-                                            <div class="font-weight-bold d-block">Enter Charge Amount</div><button id="charge_social" class="btn btn-outline-primary">Approve Charge</button><button id="charge_social" class="btn btn-outline-success">Charge Social</button>
+                                            <div class="font-weight-bold d-block">Enter Charge Amount</div><button id="charge_social" class="btn btn-outline-success">Charge Social</button>
                                         </div>
                                         <h4 class="mb-0"><input type="text" id="charge_amount" class="form-control form-control-sm border-0 no-shadow pl-4" placeholder="enter charge amount"></h4>
                                     </div>
@@ -418,7 +418,7 @@
         // check network 
         const supportedNetId = 1287;
 
-        const starlightSocialAddress = "";
+        const starlightSocialAddress = "0x8070951c4D4d514D934Ad090cbBa592D12ad14bf";
         const iStarlightSocialContract = new web3.eth.Contract(iStarlightSocialAbi, starlightSocialAddress);
 
         var iDashboardContract;
@@ -533,6 +533,7 @@
         }
 
         async function getDashboard() { 
+            console.log("dash account : " +account)
             iStarlightSocialContract.methods.hasDashboard().call({from : account})
             .then(function(response){
                 console.log(response);
@@ -543,7 +544,7 @@
                     iStarlightSocialContract.methods.createDashboard().call({from : account}) 
                     .then(function(response){
                         console.log(response);
-                        getDb(); 
+                        iDashboardContract = new web3.eth.Contract(iDashboardAbi, response); 
                     })
                     .catch(function(err){
                         console.log(err);
